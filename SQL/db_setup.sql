@@ -16,14 +16,14 @@ CREATE TABLE employee(
 );
 
 CREATE TABLE contact_info(
-	email VARCHAR(255) PRIMARY KEY NOT NULL,
+	email VARCHAR(255) UNIQUE NOT NULL,
 	phone INTEGER,
 	address VARCHAR(255),
 	username VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE reviews(
-	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	id INT PRIMARY KEY NOT NULL,
 	item_number INT NOT NULL,
 	username VARCHAR(255) NOT NULL,
 	comment TEXT
@@ -75,7 +75,7 @@ CREATE TABLE shopping_cart(
 );
 
 CREATE TABLE customer_order(
-	order_number INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	order_number INT PRIMARY KEY NOT NULL,
 	cart_number INT NOT NULL,
 	username VARCHAR(255) NOT NULL,
 	total_price INT NOT NULL
