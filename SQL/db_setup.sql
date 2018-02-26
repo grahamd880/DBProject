@@ -75,7 +75,7 @@ CREATE TABLE shopping_cart(
 );
 
 CREATE TABLE customer_order(
-	order_number INT PRIMARY KEY NOT NULL,
+	order_number AUTO_INCREMENT PRIMARY KEY  NOT NULL,
 	cart_number INT NOT NULL,
 	username VARCHAR(255) NOT NULL,
 	total_price INT NOT NULL
