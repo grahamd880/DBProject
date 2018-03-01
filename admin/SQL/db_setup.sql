@@ -1,3 +1,19 @@
+USE runnersGlobal;
+
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS contact_info;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS shoe;
+DROP TABLE IF EXISTS clothing;
+DROP TABLE IF EXISTS watch;
+DROP TABLE IF EXISTS payment_info;
+DROP TABLE IF EXISTS shopping_cart;
+DROP TABLE IF EXISTS customer_order;
+DROP TABLE IF EXISTS customer_order_shipped;
+
+
 CREATE TABLE customer(
 	username VARCHAR(255) PRIMARY KEY NOT NULL,
 	name VARCHAR(255) NOT NULL,
@@ -75,7 +91,7 @@ CREATE TABLE shopping_cart(
 );
 
 CREATE TABLE customer_order(
-	order_number AUTO_INCREMENT PRIMARY KEY  NOT NULL,
+	order_number INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	cart_number INT NOT NULL,
 	username VARCHAR(255) NOT NULL,
 	total_price INT NOT NULL
