@@ -2,6 +2,7 @@
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
+var mysql = require('mysql');
 
 http.createServer(function (req, res) {
 	//parse the url
@@ -21,5 +22,16 @@ http.createServer(function (req, res) {
 		res.write(data);
 		return res.end();
 	});
+
+	var con = mysql.createConnection({
+		host: "localhost",
+		user: "darth",
+		password: "deathstar921intheworks"
+	});
+
+	con.connect(function(err){
+		if(err) throw err;
+		console.log("Connected!");
+	})
 
 }).listen(8080);
