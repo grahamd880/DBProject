@@ -26,7 +26,8 @@ http.createServer(function (req, res) {
 	var con = mysql.createConnection({
 		host: "localhost",
 		user: "darth",
-		password: "deathstar921intheworks"
+		password: "deathstar921intheworks",
+		database: "runnersGlobal"
 	});
 
 	con.connect(function(err){
