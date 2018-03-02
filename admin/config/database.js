@@ -5,4 +5,4 @@ module.exports = {
 	user: "darth",
 	password: "deathstar921intheworks",
 	database: "runnersGlobal"
-}
+};

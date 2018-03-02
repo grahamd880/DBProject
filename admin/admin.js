@@ -33,6 +33,6 @@ http.createServer(function (req, res) {
 	con.connect(function(err){
 		if(err) throw err;
 		console.log("Connected!");
-	})
+	});
 
 }).listen(8080);
