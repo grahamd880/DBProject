@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Node Authentication</title>
+    <title>Admin Page</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <style>
@@ -12,7 +12,7 @@
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <h1><span class="fa fa-anchor"></span> Admin Page</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
@@ -21,13 +21,28 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+                <h3><span class="fa fa-user"></span> Options</h3>
 
                     <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
+                        <button>Get Employees Info</button><br>
+                        <strong>Get Employees Info</strong>: <!--get the id--><br>
+                        <strong>Get Customer Info</strong>: <!--get the email--><br>
+                        <strong>Update Person Info</strong>: <br>
+                        <strong>Get All Inventory</strong>: <!--get password--><br>
+                        <strong>Add Item</strong>: <br>
+                        <strong>Update Item</strong>: <br>
+                        <strong>Delete Item</strong>:
+
                     </p>
+
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Results</h3>
+
+                   
 
             </div>
         </div>
