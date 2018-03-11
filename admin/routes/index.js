@@ -143,7 +143,7 @@ router.get('/fillTables', function(req, res, next) {
       PersonId = person.get('id');
     });
     models.customer.bulkCreate([
-      {personId:PersonId}
+      {registration_date:3/10/2018,personId:PersonId}
     ])
   });
   
