@@ -21,7 +21,7 @@ router.post('/login', function(req, res, next) {
   res.render('admin', { title: 'Database Administration', tables: tables});
 });
 
-router.get('getTable/:table', function(req,res,next){
+router.get('/getTable/:table', function(req,res,next){
   var table = req.params.tableName;
   switch(table){
     case 'People':
