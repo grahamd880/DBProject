@@ -140,7 +140,7 @@ router.get('/fillTables', function(req, res, next) {
   }).then(persons =>{
     var PersonId;
     persons.forEach(person =>{
-      personId = steelType.get('id');
+      personId = person.get('id');
     });
     models.customer.bulkCreate([
       {personId:PersonId}
