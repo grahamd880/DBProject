@@ -82,7 +82,7 @@ router.get('/fillTables', function(req, res, next) {
     attributes:['id'],
     where:{model:'pegasus'}
   }).then(items =>{
-    var itemId;
+    var ItemId;
     items.forEach(item =>{
       ItemId = item.get('id');
     });
@@ -97,7 +97,7 @@ router.get('/fillTables', function(req, res, next) {
     attributes:['id'],
     where:{model:'Clifton3'}
   }).then(items =>{
-    var itemId;
+    var ItemId;
     items.forEach(item =>{
       ItemId = item.get('id');
     });
@@ -114,7 +114,7 @@ router.get('/fillTables', function(req, res, next) {
   }).then(persons =>{
     var PersonId;
     persons.forEach(person =>{
-      personId = person.get('id');
+      PersonId = person.get('id');
     });
     models.employee.bulkCreate([
       {admin:true,personId: PersonId}
@@ -127,7 +127,7 @@ router.get('/fillTables', function(req, res, next) {
   }).then(persons =>{
     var PersonId;
     persons.forEach(person =>{
-      personId = person.get('id');
+      PersonId = person.get('id');
     });
     models.employee.bulkCreate([
       {admin:false,personId:PersonId}
@@ -140,7 +140,7 @@ router.get('/fillTables', function(req, res, next) {
   }).then(persons =>{
     var PersonId;
     persons.forEach(person =>{
-      personId = person.get('id');
+      PersonId = person.get('id');
     });
     models.customer.bulkCreate([
       {personId:PersonId}
