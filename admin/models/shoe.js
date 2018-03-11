@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     gender: {
-      type: DataTypes.CHARACTER,
+      type: DataTypes.STRING,
       allowNull: false
     },
 

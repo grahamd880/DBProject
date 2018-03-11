@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     gender: {
-      type: DataTypes.CHARACTER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     size: {

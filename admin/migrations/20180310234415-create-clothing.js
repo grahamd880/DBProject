@@ -8,7 +8,7 @@ module.exports = {
       },
       gender: {
         allowNull: false,
-        type: Sequelize.CHARACTER
+        type: Sequelize.STRING
       },
       size: {
         allowNull: false,
