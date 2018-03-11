@@ -1,12 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var customer_order = sequelize.define('customer_order', {
-    id:{
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
     cart_number: {
       type: DataTypes.INTEGER,
       allowNull: false

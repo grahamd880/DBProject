@@ -1,12 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var person = sequelize.define('person', {
-    id:{
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
     username: {
       type: DataTypes.STRING,
       allowNull: false
