@@ -4,7 +4,7 @@ var crypto = require('crypto');
 var shasum = crypto.createHash('sha512');
 var sequelize = require('sequelize');
 var models = require('../models');
-var tables = ['Persons','Customers','Employees','Items','Shoes']
+var tables = ['People','Customers','Employees','Items','Shoes']
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,32 +24,32 @@ router.post('/login', function(req, res, next) {
 router.get('/getTable/:table', function(req,res,next){
   var table = req.params.table;
   switch(table){
-    case 'Persons':
+    case 'people':
     models.person.findAll().then(person =>{
       res.send(person);
     });
     break;
-    case 'Customers':
+    case 'customers':
     models.customer.findAll({include: [{model:models.person}]}).then(customers =>{
       res.send(customers);
     });
     break;
-    case 'Employees':
+    case 'employees':
     models.employee.findAll({include: [{model:models.person}]}).then(employees =>{
       res.send(employees);
     });
     break;
-    case 'Items':
+    case 'items':
     models.item.findAll().then(items =>{
       res.send(items);
     });
     break;
-    case 'Shoes':
+    case 'shoes':
     models.shoe.findAll({include: [{model:models.item}]}).then(shoes =>{
       res.send(shoes);
     })
     break;
-    case 'Reviews':
+    case 'reviews':
     models.reviews.findAll({include: [{model:models.person},{model:models.item}]}).then(reviewss =>{
       res.send(reviews);
     });
