@@ -171,7 +171,7 @@ router.get('/clearTables', function(req, res, next) {
     });
 });
 
-router.post('deleteRow',function(req,res,next){
+router.post('/deleteRow',function(req,res,next){
   var table = req.body.header.tableName
   var rowId = req.body.headers.rowIds
   switch(table){

@@ -56,7 +56,7 @@
         $scope.deleteRow = function(rowId, index){
         console.log(rowId + " " + index);
         console.log($scope.currentTable);
-        $http.post('admin/deleteRow', {
+        $http.post('deleteRow', {
           headers: {'tableName': $scope.currentTable, 'rowId': rowId}
         })
         .then(function(response) {
