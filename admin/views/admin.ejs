@@ -48,6 +48,7 @@
       app.controller('myCtrl', function($scope, $http) {
         $scope.currentTable = "";
         $scope.getTable = function(tableName) {
+          $scope.currentTable = tableName
           $http.get('getTable/' + tableName)
           .then(function(response) {
             $scope.tableResults = response.data;
