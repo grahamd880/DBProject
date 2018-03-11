@@ -28,29 +28,36 @@ router.get('/getTable/:table', function(req,res,next){
     models.person.findAll().then(persons =>{
       res.send(persons);
     });
+    break;
     case 'Customers':
     models.customer.findAll({include: [{model:models.person}]}).then(customers =>{
       res.send(customers);
     });
+    break;
     case 'Employees':
     models.employee.findAll({include: [{model:models.person}]}).then(employees =>{
       res.send(employees);
     });
+    break;
     case 'Items':
     models.item.findAll().then(items =>{
       res.send(items);
     });
+    break;
     case 'Shoes':
     models.shoe.findAll({include: [{model:models.item}]}).then(shoes =>{
       res.send(shoes);
     })
+    break;
     case 'Reviews':
     models.reviews.findAll({include: [{model:models.person},{model:models.item}]}).then(reviewss =>{
       res.send(reviews);
     });
-
     break;
     default:
+    var err = new Error('Table \'' + table + '\' Not Found');
+    err.status = 404;
+    next(err);
     break;
   }
   res.send();
