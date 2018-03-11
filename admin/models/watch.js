@@ -24,6 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   watch.associate = function(models) {
     // associations can be defined here
+
+    
   };
   return watch;
 };

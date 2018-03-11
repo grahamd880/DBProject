@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   nutrition.associate = function(models) {
     // associations can be defined here
+
+    
   };
   return nutrition;
 };

@@ -34,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   item.associate = function(models) {
     // associations can be defined here
+
+    item.hasMany(models.shoe);
+    item.hasMany(models.clothing);
+    item.hasMany(models.watch);
+    item.hasMany(models.nutrition);
   };
   return item;
 };

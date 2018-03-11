@@ -29,6 +29,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   shoe.associate = function(models) {
     // associations can be defined here
+
+    
   };
   return shoe;
 };
