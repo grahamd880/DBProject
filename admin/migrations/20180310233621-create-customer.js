@@ -7,7 +7,7 @@ module.exports = {
         allowNull: false
       },
       registration_date: {
-        type: Sequelize.TIMESTAMP,
+        type: Sequelize.DATE,
         allowNull: false
       },
       createdAt: {
