@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  </head>
+  <body ng-app="myApp" ng-controller="myCtrl">
+    <h1><%= title %></h1>
+    <% for (var i = 0; i < tables.length; i++) { %>
+      <button ng-click="getTable('<%= tables[i] %>')" type="button" class="btn"><%= tables[i] %></button>
+    <% } %>
+    <script>
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {
+        $scope.getTable = function(tableName) {
+          $http.get('getTable/' + tableName)
+          .then(function(response) {
+            $scope.tableResults = response.data;
+            console.log(response.data);
+          });
+        };
+      });
+      </script>
+  </body>
+</html>
