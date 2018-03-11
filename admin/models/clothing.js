@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   clothing.associate = function(models) {
     // associations can be defined here
 
-    clothing.belongTo(models.item,{
+    clothing.belongsTo(models.item,{
       foreignKey: {
         allowNull: false
       }
