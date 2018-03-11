@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var item = sequelize.define('item', {
     item_number: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false
     },
 

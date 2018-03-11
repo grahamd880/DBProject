@@ -1,10 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var clothing = sequelize.define('clothing', {
-    item_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     gender: {
       type: DataTypes.STRING,
       allowNull: false
@@ -26,9 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
     clothing.belongsTo(models.item,{
-      foreignKey: {
-        allowNull: false
-      }
+      foreignKey:'item_number'
     });
   };
   return clothing;
