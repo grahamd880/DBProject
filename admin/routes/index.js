@@ -22,7 +22,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.get('/getTable/:table', function(req,res,next){
-  var table = req.params.table;
+  var table = req.params.tableName;
   switch(table){
     case 'People':
     models.person.findAll().then(person =>{
