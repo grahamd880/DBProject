@@ -45,8 +45,8 @@
   </body>
     <script>
       var app = angular.module('myApp', []);
+      $scope.currentTable = "";
       app.controller('myCtrl', function($scope, $http) {
-        $scope.currentTable = "";
         $scope.getTable = function(tableName) {
           $scope.currentTable = tableName
           $http.get('getTable/' + tableName)
