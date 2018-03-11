@@ -1,11 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var payment_info = sequelize.define('payment_info', {
-    personID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
     card_number: {
       type: DataTypes.STRING,
       allowNull: false
@@ -49,6 +44,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   payment_info.associate = function(models) {
     // associations can be defined here
+    payment_info.belongsTo(models.person,{
+      foreignKey: {
+        allowNull: false
+      }
+    })
   };
   return payment_info;
 };

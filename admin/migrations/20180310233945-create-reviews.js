@@ -2,19 +2,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('reviews', {
-      reviewId: {
+      id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      item_number: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      personID: {
-        type: Sequelize.INTEGER,
-        allowNull: false
       },
       comment: {
         type: Sequelize.TEXT,

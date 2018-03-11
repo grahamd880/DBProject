@@ -5,17 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-
-    personId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
-    item_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -24,6 +13,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   shopping_cart.associate = function(models) {
     // associations can be defined here
+    shopping_cart.belongsTo(models.person,{
+      foreignKey:{
+        allowNull: false
+      }
+    })
+    shopping_cart.belongsTo(models.item,{
+      foreignKey:{
+        allowNull: false
+      }
+    })
   };
   return shopping_cart;
 };

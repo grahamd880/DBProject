@@ -1,11 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var contact_info = sequelize.define('contact_info', {
-    personId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
     email: {
       type: DataTypes.STRING,
       allowNull: false
@@ -39,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   contact_info.associate = function(models) {
     // associations can be defined here
+    contact_info.belongsTo(models.person,{
+      foreignKey: {
+        allowNull: false
+      }
+    })
   };
   return contact_info;
 };

@@ -1,9 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var item = sequelize.define('item', {
-    item_number: {
+    id: {
       type: DataTypes.INTEGER,
-      unique: true,
+      primaryKey: true,
       allowNull: false
     },
 
@@ -39,7 +39,9 @@ module.exports = (sequelize, DataTypes) => {
     item.hasMany(models.shoe);
     item.hasMany(models.clothing);
     item.hasMany(models.watch);
-    item.hasMany(models.nutrition);
+    item.hasMany(models.nutrition); 
+    item.hasMany(models.reviews);
+    item.hasMany(models.shopping_cart);
   };
   return item;
 };

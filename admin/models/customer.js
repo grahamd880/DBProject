@@ -1,10 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var customer = sequelize.define('customer', {
-    personId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     registration_date: {
       type: DataTypes.DATE,
       allowNull: false
@@ -13,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   customer.associate = function(models) {
     // associations can be defined here
+    customer.belongsTo(models.person,{
+      foreignKey: {
+        allowNull: false
+      }
+    })
   };
   return customer;
 };

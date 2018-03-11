@@ -1,21 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var reviews = sequelize.define('reviews', {
-    reviewId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
-    item_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
-    personID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
     comment: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -24,6 +9,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   reviews.associate = function(models) {
     // associations can be defined here
+    reviews.belongsTo(models.item,{
+      foreignKey:{
+        allowNull: false
+      }
+    })
+    reviews.belongsTo(models.person,{
+      foreignKey:{
+        allowNull: false
+      }
+    })
   };
   return reviews;
 };

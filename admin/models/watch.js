@@ -24,8 +24,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   watch.associate = function(models) {
     // associations can be defined here
-
-    
+    watch.belongsTo(models.item,{
+      foreignKey:{
+        allowNull: false
+      }
+    })
   };
   return watch;
 };

@@ -1,11 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var customer_order_shipped = sequelize.define('customer_order_shipped', {
-    order_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
     shipped: {
       type: DataTypes.BOOLEAN,
       allowNull: false
@@ -14,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   customer_order_shipped.associate = function(models) {
     // associations can be defined here
+    customer_order_shipped.belongsTo(models.customer_order,{
+      foreignKey: {
+        allowNull: false
+      }
+    })
   };
   return customer_order_shipped;
 };

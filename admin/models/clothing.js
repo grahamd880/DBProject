@@ -22,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
     clothing.belongsTo(models.item,{
-      foreignKey:'item_number'
+      foreignKey:{
+        allowNull: false 
+      }
     });
   };
   return clothing;

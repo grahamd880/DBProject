@@ -1,11 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var customer_order = sequelize.define('customer_order', {
-    order_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    id:{
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
     },
-
     cart_number: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -39,6 +40,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   customer_order.associate = function(models) {
     // associations can be defined here
+    customer_order.hasMany(models.customer_order_shipped);
   };
   return customer_order;
 };

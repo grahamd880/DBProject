@@ -2,7 +2,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('customer_orders', {
-      order_number: {
+      id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

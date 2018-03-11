@@ -1,11 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var person = sequelize.define('person', {
-    personId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    id:{
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
     },
-
     username: {
       type: DataTypes.STRING,
       allowNull: false
@@ -39,6 +40,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   person.associate = function(models) {
     // associations can be defined here
+    person.hasMany(models.customer);
+    person.hasMany(models.employee);
+    person.hasMany(models.contact_info);
+    person.hasMany(models.payment_info);
+    person.hasMany(models.reviews);
+    person.hasMany(models.shopping_cart);
   };
   return person;
 };

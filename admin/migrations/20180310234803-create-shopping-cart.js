@@ -6,14 +6,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      personId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      item_number: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
       quantity: {
         type: Sequelize.INTEGER,
         allowNull: false

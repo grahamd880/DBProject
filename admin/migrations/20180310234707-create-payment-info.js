@@ -2,10 +2,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('payment_infos', {
-      personID: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
       card_number: {
         type: Sequelize.STRING,
         allowNull: false,
