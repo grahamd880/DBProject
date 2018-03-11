@@ -34,9 +34,9 @@
       <table>
       <tr>
         <th>Delete</th>
-        <th ng-repeat="x in tableKeys">{{x}}</th>
+        <th ng-repeat="x in tablesKeys">{{x}}</th>
       </tr>
-      <tr ng-repeat="row in tableResults">
+      <tr ng-repeat="row in tablesResults">
         <th><button ng-click="deleteRow(row.id, $index)" type="button">X</button>
         <td ng-repeat="item in row">{{item}}</td>
       </tr>
