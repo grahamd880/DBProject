@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var customer = sequelize.define('customer', {
-    id: {
+    personId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },

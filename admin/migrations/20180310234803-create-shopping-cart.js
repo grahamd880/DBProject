@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      personID: {
+      personId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
