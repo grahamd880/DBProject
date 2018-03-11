@@ -1,10 +1,26 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var reviews = sequelize.define('reviews', {
-    id: DataTypes.ITEGER,
-    item_number: DataTypes.INTEGER,
-    personID: DataTypes.INTEGER,
-    comment: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    item_number: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    personID: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    comment: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+
   }, {});
   reviews.associate = function(models) {
     // associations can be defined here

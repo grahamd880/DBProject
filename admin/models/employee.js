@@ -1,7 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var employee = sequelize.define('employee', {
-    id: DataTypes.INTEGER
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    admin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
   }, {});
   employee.associate = function(models) {
     // associations can be defined here
