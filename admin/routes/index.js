@@ -60,7 +60,6 @@ router.get('/getTable/:table', function(req,res,next){
     next(err);
     break;
   }
-  res.send();
 });
 
 router.get('/fillTables', function(req, res, next) {
