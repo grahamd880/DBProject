@@ -179,20 +179,17 @@ router.post('/deleteRow',function(req,res,next){
  
   switch(table){
     case 'Customers':
-    models.customer.destroy({where: {id : rowId}})
-    models.person.destroy({where: {id : rowId}}).then(function(){
+    models.customer.destroy({where: {id:rowId}}).then(function(){
       res.sendStatus(200)
     });
     break;
     case 'Employees':
-    models.employee.destroy({where: {id:rowId}})
-    models.person.destroy({where: {id:rowId}}).then(function(){
+    models.employee.destroy({where: {id:rowId}}).then(function(){
       res.sendStatus(200)
     });
     break;
     case 'Shoes':
-    models.shoe.destroy({where: {id:rowId}})
-    models.item.destroy({where: {id:rowId}}).then(function(){
+    models.shoe.destroy({where: {id:rowId}}).then(function(){
       res.sendStatus(200)
     });
     break;
