@@ -24,32 +24,32 @@ router.post('/login', function(req, res, next) {
 router.get('/getTable/:table', function(req,res,next){
   var table = req.params.table;
   switch(table){
-    case 'people':
+    case 'People':
     models.person.findAll().then(person =>{
       res.send(person);
     });
     break;
-    case 'customers':
+    case 'Customers':
     models.customer.findAll({include: [{model:models.person}]}).then(customers =>{
       res.send(customers);
     });
     break;
-    case 'employees':
+    case 'Employees':
     models.employee.findAll({include: [{model:models.person}]}).then(employees =>{
       res.send(employees);
     });
     break;
-    case 'items':
+    case 'Items':
     models.item.findAll().then(items =>{
       res.send(items);
     });
     break;
-    case 'shoes':
+    case 'Shoes':
     models.shoe.findAll({include: [{model:models.item}]}).then(shoes =>{
       res.send(shoes);
     })
     break;
-    case 'reviews':
+    case 'Reviews':
     models.reviews.findAll({include: [{model:models.person},{model:models.item}]}).then(reviewss =>{
       res.send(reviews);
     });
