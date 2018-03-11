@@ -1,11 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var shoe = sequelize.define('shoe', {
-    item_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-
     gender: {
       type: DataTypes.STRING,
       allowNull: false
