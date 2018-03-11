@@ -26,9 +26,9 @@ router.get('/getTable/:table', function(req,res,next){
   switch(table){
     case 'Persons':
     models.person.findAll().then(persons =>{
-      res.send(person);
       persons.array.forEach(person => {
         console.log(person.get('username'));
+        res.send(person);
       });
     });
     case 'Customers':
