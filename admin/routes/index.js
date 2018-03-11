@@ -26,29 +26,26 @@ router.get('/getTable/:table', function(req,res,next){
   switch(table){
     case 'Persons':
     models.person.findAll().then(persons =>{
-      persons.array.forEach(person => {
-        console.log(person.get('username'));
-        res.send(person);
-      });
+      res.send(persons);
     });
     case 'Customers':
-    models.customer.findAll().then(customers =>{
-      res.send(customer);
+    models.customer.findAll({include: [{model:models.person}]}).then(customers =>{
+      res.send(customers);
     });
     case 'Employees':
-    models.employee.findAll().then(employees =>{
-      res.send(employee);
+    models.employee.findAll({include: [{model:models.person}]}).then(employees =>{
+      res.send(employees);
     });
     case 'Items':
     models.item.findAll().then(items =>{
-      res.send(item);
+      res.send(items);
     });
     case 'Shoes':
-    models.shoe.findAll().then(shoes =>{
-      res.send(shoe);
+    models.shoe.findAll({include: [{model:models.item}]}).then(shoes =>{
+      res.send(shoes);
     })
     case 'Reviews':
-    models.reviews.findAll().then(reviewss =>{
+    models.reviews.findAll({include: [{model:models.person},{model:models.item}]}).then(reviewss =>{
       res.send(reviews);
     });
 
