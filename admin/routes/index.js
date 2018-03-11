@@ -3,7 +3,7 @@ var router = express.Router();
 var crypto = require('crypto');
 var shasum = crypto.createHash('sha512');
 var sequelize = require('sequelize');
-var models = require('../modles');
+var models = require('../models');
 var tables = ['Persons','Customers','Employees','Items','Reviews']
 
 /* GET home page. */
