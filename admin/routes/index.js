@@ -25,8 +25,8 @@ router.get('/getTable/:table', function(req,res,next){
   var table = req.params.table;
   switch(table){
     case 'Persons':
-    models.person.findAll().then(persons =>{
-      res.send(persons);
+    models.person.findAll().then(person =>{
+      res.send(person);
     });
     break;
     case 'Customers':
