@@ -173,7 +173,9 @@ router.get('/clearTables', function(req, res, next) {
 
 router.post('/deleteRow',function(req,res,next){
   var table = req.body.header.tableName
+  console.log(table)
   var rowId = req.body.headers.rowIds
+  console.log(rowId)
   switch(table){
     case 'Customers':
     models.customer.destroy({where: {id : rowId}})
