@@ -6,12 +6,43 @@
     <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
     <link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <style>
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          margin-top: 10px;
+      }
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+    </style>
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <h1><%= title %></h1>
-    <% for (var i = 0; i < tables.length; i++) { %>
-      <button ng-click="getTable('<%= tables[i] %>')" type="button" class="btn"><%= tables[i] %></button>
-    <% } %>
+    <div>
+      <% for (var i = 0; i < tables.length; i++) { %>
+        <button ng-click="getTable('<%= tables[i] %>')" type="button" class="btn"><%= tables[i] %></button>
+      <% } %>
+    </div>
+    <div>
+      <table>
+      <tr>
+        <th>Delete</th>
+        <th ng-repeat="x in tableKeys">{{x}}</th>
+      </tr>
+      <tr ng-repeat="row in tableResults">
+        <th><button ng-click="deleteRow(row.id, $index)" type="button">X</button>
+        <td ng-repeat="item in row">{{item}}</td>
+      </tr>
+      </table>
+    </div>
+  </body>
     <script>
       var app = angular.module('myApp', []);
       app.controller('myCtrl', function($scope, $http) {
@@ -22,6 +53,18 @@
             console.log(response.data);
           });
         };
+        $scope.deleteRow = function(rowId, index){
+        console.log(rowId + " " + index);
+        console.log($scope.currentTable);
+        $http.post('admin/deleteRow', {
+          headers: {'tableName': $scope.currentTable, 'rowId': rowId}
+        })
+        .then(function(response) {
+          if(response.status == 200){
+            $scope.tableResults.splice(index, 1);
+          }
+        });
+      };
       });
       </script>
   </body>

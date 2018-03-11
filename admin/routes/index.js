@@ -168,4 +168,34 @@ router.get('/clearTables', function(req, res, next) {
     });
 });
 
+router.post('/deleteRow',function(req,res,next){
+  var table = req.body.header.tableName
+  var rowId = req.body.headers.rowIds
+  switch(table){
+    case 'Customers':
+    models.customer.destroy({where: {id : rowId}})
+    models.person.destroy({where: {id : rowId}}).then(function(){
+      res.sendStatus(200)
+    });
+    break;
+    case 'Employees':
+    models.employee.destroy({where: {id:rowId}})
+    models.person.destroy({where: {id:rowId}}).then(function(){
+      res.sendStatus(200)
+    });
+    break;
+    case 'Shoes':
+    models.shoe.destroy({where: {id:rowId}})
+    models.item.destroy({where: {id:rowId}}).then(function(){
+      res.sendStatus(200)
+    });
+    break;
+    default:
+    var err = new Error('Table \''+ table + '\' NotFound')
+    err.status = 404;
+    next(err);
+    break;
+  }
+})
+
 module.exports = router;
