@@ -47,9 +47,10 @@
       var app = angular.module('myApp', []);
       app.controller('myCtrl', function($scope, $http) {
         $scope.getTable = function(tableName) {
-          $http.get('getTable/' + tableName)
+          $http.get('admin/getTable/' + tableName)
           .then(function(response) {
             $scope.tableResults = response.data;
+            $scope.tableKeys = Object.keys(response.data[0]);
             console.log(response.data);
           });
         };
