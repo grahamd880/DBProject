@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   shoe.associate = function(models) {
     // associations can be defined here
     shoe.belongsTo(models.item,{
+      onDelete: "CASCADE",
       foreignKey:{
         allowNull: false
       }

@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   customer_order_shipped.associate = function(models) {
     // associations can be defined here
     customer_order_shipped.belongsTo(models.customer_order,{
+      onDelete:"CASCADE",
       foreignKey: {
         allowNull: false
       }

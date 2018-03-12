@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
   contact_info.associate = function(models) {
     // associations can be defined here
     contact_info.belongsTo(models.person,{
+      onDelete: "CASCADE",
       foreignKey: {
         allowNull: false
       }

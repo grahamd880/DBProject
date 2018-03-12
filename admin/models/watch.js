@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   watch.associate = function(models) {
     // associations can be defined here
     watch.belongsTo(models.item,{
+      onDelete: "CASCADE",
       foreignKey:{
         allowNull: false
       }

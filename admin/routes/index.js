@@ -6,20 +6,85 @@ var sequelize = require('sequelize');
 var models = require('../models');
 var tables = ['People','Customers','Employees','Items','Shoes']
 
+var checkAuthCookie = function(req){
+  return new Promise(function(resolve,reject){
+    if('cookies' in req && 'name' in req.cookies && 'token' in req.cookies){
+      var nameCookie = req.cookies.name;
+      var tokenCookie = req.cookies.token;
+      models.employee.findOne({include:[{model:models.person}],where:{'$person.name$': nameCookie, token: tokenCookie}})
+      .then(employee =>{
+        if(employee){
+          resolve(employee);
+        }
+        else{
+          reject("Employee's cookie does not match");
+        }
+      })
+    }
+    else{
+      reject("No cookie");
+    }
+  })
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title:'Admin' });
+  checkAuthCookie(req).then(()=>{
+    res.render('index',{title: 'Admin', tables: tables});
+  }).catch(err =>{
+    console.log(err);
+    res.render('login',{title: 'Admin'});
+  })
 });
 
-router.post('/login', function(req, res, next) {
-  var username = req.body.username;
-  var password = req.body.password;
-  //shasum.update(password,'utf8');
-  //shasum.digest('utf8');
-  //console.log(shasum);
-
-  res.render('admin', { title: 'Database Administration', tables: tables});
+router.get('/logout', function(req, res, next) {
+  checkAuthCookie(req).then(employee =>{
+    employee.update({token: null});
+    res.sendStatus(200);
+  }).catch(err =>{
+    console.log(err);
+    res.sendStatus(500);
+  });
 });
+
+router.get('/login', function(req, res, next) {
+  checkAuthCookie(req).then(() =>{
+    res.redirect('http://192.168.50.26/admin');
+  }).catch(err =>{
+    console.log(err);
+    res.render('login',{title: 'Admin'});
+  })
+});
+
+router.post('/login',function(req,res,next){
+  var name = null;
+  var password = null;
+  if('name' in req.body && 'password' in req.body){
+    name = req.body.name;
+    password = req.body.password;
+
+    models.employee.findOne({include:[{model:models.person}], where:{'$person.username$': name, '$person.password$': password}})
+    .then(employee =>{
+      if(employee){
+        var randomNumber = Math.random().toString();
+        randomNumber = randomNumber.substring(2,9);
+
+        employee.update({token: randomNumber});
+        res.cookie('token',randomNumber, {maxAge: 900000, httpOnly: false});
+        res.cookie('name', name, {maxAge: 900000, httpOnly: false});
+        res.redirect(302, '/admin');
+      }
+      else{
+        var err = new Error('Unauthorized: Incorrect username/password');
+        err.status = 401;
+        next(err);
+      }
+    })
+  }
+  else{
+    res.render('login',{title: 'Admin'});
+  }
+})
 
 router.get('/getTable/:table', function(req,res,next){
   var table = req.params.table;

@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
     nutrition.belongsTo(models.item,{
+      onDelete: "CASCADE",
       foreignKey:{
         allowNull: false
       }

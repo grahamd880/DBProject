@@ -10,11 +10,13 @@ module.exports = (sequelize, DataTypes) => {
   reviews.associate = function(models) {
     // associations can be defined here
     reviews.belongsTo(models.item,{
+      onDelete: "CASCADE",
       foreignKey:{
         allowNull: false
       }
     })
     reviews.belongsTo(models.person,{
+      onDelete: "CASCADE",
       foreignKey:{
         allowNull: false
       }

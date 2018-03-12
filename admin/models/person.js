@@ -36,6 +36,11 @@ module.exports = (sequelize, DataTypes) => {
     logged_on: {
       type: DataTypes.BOOLEAN,
       allowNull: false
+    },
+    
+    token: {
+      type: DataTypes.String,
+      allowNull: true
     }
 
   }, {});

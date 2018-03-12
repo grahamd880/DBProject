@@ -29,6 +29,7 @@
       <% for (var i = 0; i < tables.length; i++) { %>
         <button ng-click="getTable('<%= tables[i] %>')" type="button" class="btn"><%= tables[i] %></button>
       <% } %>
+      <button ng-click="logout()" type="button">Logout</button>
     </div>
     <div>
       <table>
@@ -45,13 +46,24 @@
   </body>
     <script>
       var app = angular.module('myApp', []);
-      $scope.currentTable = "";
+      
       app.controller('myCtrl', function($scope, $http) {
+        $scope.currentTable = "";
         $scope.getTable = function(tableName) {
           $scope.currentTable = tableName
           $http.get('getTable/' + tableName)
           .then(function(response) {
             $scope.tableResults = response.data;
+            //new stuff-------------
+            $scope.tableResults.forEach(result => {
+            if ('createdAt' in result) {
+              delete result['createdAt'];
+            }
+            if ('updatedAt' in result) {
+              delete result['updatedAt'];
+            }
+          });
+          //-------------------------------
             $scope.tableKeys = Object.keys(response.data[0]);
             console.log(response.data);
           });
@@ -59,12 +71,21 @@
         $scope.deleteRow = function(rowId, index){
         console.log(rowId + " " + index);
         console.log($scope.currentTable);
-        $http.post('deleteRow/', {
+        //changed this
+        $http.post('admin/deleteRow', {
           headers: {'tableName': $scope.currentTable, 'rowId': rowId}
         })
         .then(function(response) {
           if(response.status == 200){
             $scope.tableResults.splice(index, 1);
+          }
+        });
+      };
+      $scope.logout = function(){
+        $http.get('admin/logout')
+        .then(function(response) {
+          if(response.status == 200){
+            $window.location.href = '/admin/login';
           }
         });
       };

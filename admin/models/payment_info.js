@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   payment_info.associate = function(models) {
     // associations can be defined here
     payment_info.belongsTo(models.person,{
+      onDelete: "CASCADE",
       foreignKey: {
         allowNull: false
       }

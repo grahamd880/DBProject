@@ -14,11 +14,13 @@ module.exports = (sequelize, DataTypes) => {
   shopping_cart.associate = function(models) {
     // associations can be defined here
     shopping_cart.belongsTo(models.person,{
+      onDelete: "CASCADE",
       foreignKey:{
         allowNull: false
       }
     })
     shopping_cart.belongsTo(models.item,{
+      onDelete: "CASCADE",
       foreignKey:{
         allowNull: false
       }
