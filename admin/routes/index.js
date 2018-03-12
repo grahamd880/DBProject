@@ -30,7 +30,7 @@ var checkAuthCookie = function(req){
 /* GET home page. */
 router.get('/', function(req, res, next) {
   checkAuthCookie(req).then(()=>{
-    res.render('index',{title: 'Admin', tables: tables});
+    res.render('admin',{title: 'Admin', tables: tables});
   }).catch(err =>{
     console.log(err);
     res.render('login',{title: 'Admin'});
