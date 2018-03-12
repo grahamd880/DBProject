@@ -40,10 +40,10 @@ router.get('/', function(req, res, next) {
 router.post('/logout', function(req, res, next) {
   checkAuthCookie(req).then(employee =>{
     employee.update({token: null});
-    res.render('admin',{title:'Admin',tables:tables});
+    res.redirect('http://192.168.50.26/admin');
   }).catch(err =>{
     console.log(err);
-    res.render('admin',{title:'Admin',tables:tables});
+    res.redirect('http://192.168.50.26/admin');
   });
 });
 
