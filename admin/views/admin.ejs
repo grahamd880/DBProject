@@ -30,7 +30,7 @@
         <button ng-click="getTable('<%= tables[i] %>')" type="button" class="btn"><%= tables[i] %></button>
       <% } %>
       <form action="/admin/logout" method="post">
-        <button type="submit" class="btn btn-primary btn-lg">Logout</button>
+        <button type="submit">Logout</button>
       </form>
     </div>
     <div>
@@ -74,7 +74,7 @@
         console.log(rowId + " " + index);
         console.log($scope.currentTable);
         //changed this
-        $http.post('admin/deleteRow', {
+        $http.post('admin/deleteRow/', {
           headers: {'tableName': $scope.currentTable, 'rowId': rowId}
         })
         .then(function(response) {
