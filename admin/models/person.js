@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     
     token: {
-      type: DataTypes.String,
+      type: DataTypes.STRING,
       allowNull: true
     }
 
