@@ -243,6 +243,11 @@ router.post('/deleteRow',function(req,res,next){
   var rowId = req.body.headers.rowId
  
   switch(table){
+    case 'People':
+    models.person.destroy({where: {id:rowId}}).then(function(){
+      res.sendStatus(200)
+    });
+    break;
     case 'Customers':
     models.customer.destroy({where: {id:rowId}}).then(function(){
       res.sendStatus(200)
