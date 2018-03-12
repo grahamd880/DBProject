@@ -41,6 +41,7 @@ router.get('/logout', function(req, res, next) {
   checkAuthCookie(req).then(employee =>{
     employee.update({token: null});
     res.sendStatus(200);
+    res.redirect('/admin/login')
   }).catch(err =>{
     console.log(err);
     res.sendStatus(500);
