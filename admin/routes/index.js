@@ -100,7 +100,7 @@ router.get('/getTable/:table', function(req,res,next){
     });
     break;
     case 'Employees':
-    models.employee.findAll({attributes:['person.username','person.firstName','person.lastName','admin']},{include: [{model:models.person}]}).then(employees =>{
+    models.employee.findAll({attributes:['username','firstName','lastName','admin']},{include: [{model:models.person}]}).then(employees =>{
       res.send(employees);
     });
     break;
