@@ -11,7 +11,7 @@ var checkAuthCookie = function(req){
     if('cookies' in req && 'name' in req.cookies && 'token' in req.cookies){
       var nameCookie = req.cookies.name;
       var tokenCookie = req.cookies.token;
-      models.employee.findOne({include:[{model:models.person}],where:{'$person.name$': nameCookie, token: tokenCookie}})
+      models.employee.findOne({include:[{model:models.person}],where:{'$person.username$': nameCookie, token: tokenCookie}})
       .then(employee =>{
         if(employee){
           resolve(employee);
