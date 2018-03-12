@@ -240,7 +240,7 @@ router.post('/deleteRow',function(req,res,next){
   console.log(req.body)
   var table = req.body.header.tableName
   
-  var rowId = req.body.headers.rowIds
+  var rowId = req.body.headers.rowId
  
   switch(table){
     case 'Customers':
