@@ -54,7 +54,7 @@
           $http.get('getTable/' + tableName)
           .then(function(response) {
             $scope.tableResults = response.data;
-            //new stuff-------------
+            /*//new stuff-------------
             $scope.tableResults.forEach(result => {
             if ('createdAt' in result) {
               delete result['createdAt'];
@@ -63,7 +63,7 @@
               delete result['updatedAt'];
             }
           });
-          //-------------------------------
+          //-------------------------------*/
             $scope.tableKeys = Object.keys(response.data[0]);
             console.log(response.data);
           });
