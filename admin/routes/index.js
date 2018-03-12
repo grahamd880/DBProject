@@ -28,7 +28,7 @@ var checkAuthCookie = function(req){
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/admin', function(req, res, next) {
   checkAuthCookie(req).then(()=>{
     res.render('index',{title: 'Admin', tables: tables});
   }).catch(err =>{
