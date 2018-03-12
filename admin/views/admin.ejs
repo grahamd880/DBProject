@@ -51,7 +51,7 @@
         $scope.currentTable = "";
         $scope.getTable = function(tableName) {
           $scope.currentTable = tableName
-          $http.get('getTable/' + tableName)
+          $http.get('admin/getTable/' + tableName)
           .then(function(response) {
             $scope.tableResults = response.data;
             /*//new stuff-------------
