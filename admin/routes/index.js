@@ -90,7 +90,7 @@ router.get('/getTable/:table', function(req,res,next){
   var table = req.params.table;
   switch(table){
     case 'People':
-    models.person.findAll().then(person =>{
+    models.person.findAll({attributes:['username','firstName','lastName','logged_on']}).then(person =>{
       res.send(person);
     });
     break;
