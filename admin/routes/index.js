@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
     res.render('admin',{title: 'Admin', tables: tables});
   }).catch(err =>{
     console.log(err);
-    res.render('login',{title: 'Admin'});
+    res.render('index',{title: 'Admin'});
   })
 });
 
