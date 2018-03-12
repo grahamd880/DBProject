@@ -29,7 +29,9 @@
       <% for (var i = 0; i < tables.length; i++) { %>
         <button ng-click="getTable('<%= tables[i] %>')" type="button" class="btn"><%= tables[i] %></button>
       <% } %>
-      <button ng-click="logout()" type="button">Logout</button>
+      <form action="/admin/logout" method="post">
+        <button type="submit" class="btn btn-primary btn-lg">Logout</button>
+      </form>
     </div>
     <div>
       <table>
@@ -78,14 +80,6 @@
         .then(function(response) {
           if(response.status == 200){
             $scope.tableResults.splice(index, 1);
-          }
-        });
-      };
-      $scope.logout = function(){
-        $http.get('admin/logout')
-        .then(function(response) {
-          if(response.status == 200){
-            $window.location.href = '/admin/login';
           }
         });
       };
